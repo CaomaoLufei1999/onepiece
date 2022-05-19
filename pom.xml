@@ -6,6 +6,8 @@
     <packaging>pom</packaging>
     <modules>
         <module>onepiece-common</module>
+        <module>onepiece-wechart</module>
+        <module>onepiece-search</module>
     </modules>
     <groupId>com.onepiece</groupId>
     <artifactId>onepiece</artifactId>
