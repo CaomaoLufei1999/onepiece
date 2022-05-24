@@ -1,4 +1,8 @@
+# server 相关配置
 server:
-  port: 8888
+  port: 80
+  servlet:
+    context-path: /onepiece
 
-
+wechart:
+  token: onepiece # 签名

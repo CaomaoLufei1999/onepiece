@@ -4,14 +4,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @author csp
- * @date 2022-01-22 15:41:13
+ * @描述 项目初始化测试
+ * @作者 天天发呆的程序员
+ * @创建时间 2022-05-24
  */
 @RestController
 public class TestController {
 
     @RequestMapping("/hello")
     public String hello() {
-        return "hello";
+        return "Hello World";
     }
 }
