@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @创建时间 2022-05-24
  */
 @RestController
+@RequestMapping("/test")
 public class TestController {
 
     @RequestMapping("/hello")

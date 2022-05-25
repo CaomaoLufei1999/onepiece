@@ -1,5 +1,7 @@
 package com.onepiece.start.controller.wechart;
 
+import com.alibaba.fastjson.JSONObject;
+import com.onepiece.start.service.HttpApiService;
 import com.onepiece.start.service.WeChartService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,6 +23,9 @@ public class WeChartController {
 
     @Autowired
     private WeChartService weChartService;
+
+    @Autowired
+    private HttpApiService httpApiService;
 
     /**
      * 验证消息的确来自微信服务器
@@ -44,5 +49,11 @@ public class WeChartController {
             logger.error("===================签名对比校验失败，微信授权接入失败===================");
             return null;
         }
+    }
+
+    @RequestMapping("/httpclient")
+    public JSONObject test() throws Exception {
+        JSONObject response = weChartService.getAccessToken("client_credential", "wx92d68f8c12fddbbb", "eaaa2c0b1940ec3851d24b60189240f4");
+        return response;
     }
 }

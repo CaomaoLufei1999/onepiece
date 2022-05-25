@@ -1,9 +1,9 @@
 package com.onepiece.start.service.impl;
 
+import com.onepiece.start.service.HttpApiService;
 import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
 import org.apache.http.ParseException;
-import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.*;
@@ -28,7 +28,7 @@ import java.util.*;
  * @创建时间 2022-05-25
  */
 @Service
-public class HttpApiServiceImpl {
+public class HttpApiServiceImpl implements HttpApiService {
 
     private static final Logger logger = LoggerFactory.getLogger(HttpApiServiceImpl.class);
 
@@ -41,6 +41,7 @@ public class HttpApiServiceImpl {
     // 编码格式: 发送编码格式统一用UTF-8
     private static final String ENCODING = "UTF-8";
 
+    @Override
     public String doGet(String url, Map<String, String> headers, Map<String, String> params) {
         // 初始化Http客户端,创建访问的地址
         HttpGet httpGet = getUrlParam(url, params);
@@ -55,36 +56,39 @@ public class HttpApiServiceImpl {
             // 从响应模型中获取响应实体
             HttpEntity responseEntity = response.getEntity();
 
+            byte[] bytes = EntityUtils.toByteArray(responseEntity);
+            String responseString = new String(bytes, ENCODING);
+
             logger.info("响应状态为: {}", response.getStatusLine());
-            if (responseEntity != null) {
-                logger.info("响应内容长度为: {}", responseEntity.getContentLength());
-                logger.info("响应内容为: {}", EntityUtils.toString(responseEntity));
-            }
-            assert responseEntity != null;
-            return EntityUtils.toString(responseEntity);
+            logger.info("响应内容长度为: {}", responseEntity.getContentLength());
+            logger.info("响应内容为: {}", responseString);
+            return responseString;
         } catch (ParseException | IOException e) {
-            e.printStackTrace();
+            logger.error("HttpApiServiceImpl doGet-1-1 method error: {}" ,e.getMessage());
         } finally {
             // 回收response到连接池
             if (null != response) {
                 try {
                     EntityUtils.consume(response.getEntity());
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    logger.error("HttpApiServiceImpl doGet-1-2 method error: {}" ,e.getMessage());
                 }
             }
         }
         return null;
     }
 
+    @Override
     public String doGet(String url, Map<String, String> params) {
         return doGet(url, null, params);
     }
 
+    @Override
     public String doGet(String url) {
         return doGet(url, null, null);
     }
 
+    @Override
     public String doPost(String url, Map<String, String> headers, Map<String, String> params, Map<String, String> UrlParams) {
         // 初始化Http客户端，创建访问的地址
         HttpPost httpPost = postUrlParam(url, UrlParams);
@@ -100,34 +104,41 @@ public class HttpApiServiceImpl {
             response = httpClient.execute(httpPost);
             // 从响应模型中获取响应实体
             HttpEntity responseEntity = response.getEntity();
-            return EntityUtils.toString(responseEntity);
+
+            byte[] bytes = EntityUtils.toByteArray(responseEntity);
+            String responseString = new String(bytes, ENCODING);
+            return responseString;
         } catch (ParseException | IOException e) {
-            e.printStackTrace();
+            logger.error("HttpApiServiceImpl doPost-1-1 method error: {}" ,e.getMessage());
         } finally {
             // 回收response到连接池
             if (null != response) {
                 try {
                     EntityUtils.consume(response.getEntity());
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    logger.error("HttpApiServiceImpl doPost-1-2 method error: {}" ,e.getMessage());
                 }
             }
         }
         return null;
     }
 
+    @Override
     public String doPost(String url, Map<String, String> headers, Map<String, String> urlParams) {
         return doPost(url, headers, null, urlParams);
     }
 
+    @Override
     public String doPost(String url, Map<String, String> urlParams) {
         return doPost(url, null, null, urlParams);
     }
 
+    @Override
     public String doPost(String url) {
         return doPost(url, new HashMap<>());
     }
 
+    @Override
     public String doPost(String url, Map<String, String> headers, Map<String, String> params, String json) {
         // 初始化Http客户端，创建访问的地址
         HttpPost httpPost = postUrlParam(url, params);
@@ -141,7 +152,7 @@ public class HttpApiServiceImpl {
         try {
             httpPost.setEntity(new StringEntity(json));
         } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
+            logger.error("HttpApiServiceImpl doPost-2-1 method error: {}" ,e.getMessage());
         }
 
         // 响应模型
@@ -151,26 +162,26 @@ public class HttpApiServiceImpl {
             response = httpClient.execute(httpPost);
             // 从响应模型中获取响应实体
             HttpEntity responseEntity = response.getEntity();
-            return EntityUtils.toString(responseEntity);
-        } catch (ClientProtocolException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+
+            byte[] bytes = EntityUtils.toByteArray(responseEntity);
+            String responseString = new String(bytes, ENCODING);
+            return responseString;
+        } catch (ParseException | IOException e) {
+            logger.error("HttpApiServiceImpl doPost-2-2 method error: {}" ,e.getMessage());
         } finally {
             // 回收response到连接池
             if (null != response) {
                 try {
                     EntityUtils.consume(response.getEntity());
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    logger.error("HttpApiServiceImpl doPost-2-3 method error: {}" ,e.getMessage());
                 }
             }
         }
         return null;
     }
 
+    @Override
     public String doPost(String url, String json) {
         Map<String, String> headers = new HashMap<>();
         headers.put("Content-Type", "application/json;charset=utf8");

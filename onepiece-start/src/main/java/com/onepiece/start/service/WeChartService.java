@@ -1,5 +1,7 @@
 package com.onepiece.start.service;
 
+import com.alibaba.fastjson.JSONObject;
+
 /**
  * @描述 对接微信相关接口
  * @作者 天天发呆的程序员
@@ -15,4 +17,14 @@ public interface WeChartService {
      * @param echostr   随机字符串
      */
     String verify(String signature, String timestamp, String nonce, String echostr);
+
+    /**
+     * 向微信服务器索要AccessToken凭据
+     *
+     * @param grantType 获取access_token时需要填写该参数值为：client_credential
+     * @param appId     公众号appId
+     * @param secret    公众号密钥
+     * @return
+     */
+    JSONObject getAccessToken(String grantType, String appId, String secret);
 }
