@@ -6,7 +6,6 @@
     <packaging>pom</packaging>
     <modules>
         <module>onepiece-common</module>
-        <module>onepiece-wechart</module>
         <module>onepiece-search</module>
     </modules>
     <groupId>com.onepiece</groupId>
@@ -21,6 +20,8 @@
         <spring-boot-starter-devtools.version>2.3.3.RELEASE</spring-boot-starter-devtools.version>
         <spring-boot-starter-test.version>2.3.3.RELEASE</spring-boot-starter-test.version>
         <lombok.version>1.18.18</lombok.version>
+        <http-client.version>4.5.13</http-client.version>
+        <fast-json.version>1.2.47</fast-json.version>
     </properties>
 
     <dependencyManagement>
@@ -57,6 +58,18 @@
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
+            </dependency>
+            <!-- FastJson -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fast-json.version}</version>
+            </dependency>
+            <!-- HttpClient -->
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${http-client.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

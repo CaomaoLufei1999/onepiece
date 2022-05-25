@@ -1,8 +1,15 @@
+# spring 相关配置
+spring:
+  profiles:
+    active: common                          # 激活common模块配置文件
+
 # server 相关配置
 server:
-  port: 80
+  port: 80                                  # 端口号
   servlet:
-    context-path: /onepiece
+    context-path: /onepiece                 # 项目base路径名称
 
 wechart:
-  token: onepiece # 签名
+  token: onepiece                           # 签名
+  appid: wx92d68f8c12fddbbb                 # 微信公众号appId
+  secret: eaaa2c0b1940ec3851d24b60189240f4  # 微信公众号密钥
