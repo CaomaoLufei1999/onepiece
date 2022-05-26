@@ -2,7 +2,7 @@ package com.onepiece.start.controller.wechart;
 
 import com.alibaba.fastjson.JSONObject;
 import com.onepiece.start.service.HttpApiService;
-import com.onepiece.start.service.WeChartService;
+import com.onepiece.start.service.WeChatService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,13 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
  * @创建时间 2022-05-24
  */
 @RestController
-@RequestMapping("/wechart")
-public class WeChartController {
+@RequestMapping("/wechat")
+public class WeChatController {
 
-    private static final Logger logger = LoggerFactory.getLogger(WeChartController.class);
+    private static final Logger logger = LoggerFactory.getLogger(WeChatController.class);
 
     @Autowired
-    private WeChartService weChartService;
+    private WeChatService weChatService;
 
     @Autowired
     private HttpApiService httpApiService;
@@ -39,7 +39,7 @@ public class WeChartController {
     public String verify(String signature, String timestamp, String nonce, String echostr) {
 
         // sha1加密后得到的字符串
-        String verify = weChartService.verify(signature, timestamp, nonce, echostr);
+        String verify = weChatService.verify(signature, timestamp, nonce, echostr);
 
         // 加密后的字符串和signature进行对比校验
         if (verify.equals(signature)) {
@@ -51,9 +51,18 @@ public class WeChartController {
         }
     }
 
-    @RequestMapping("/httpclient")
-    public JSONObject test() throws Exception {
-        JSONObject response = weChartService.getAccessToken("client_credential", "wx92d68f8c12fddbbb", "eaaa2c0b1940ec3851d24b60189240f4");
-        return response;
+    /**
+     * 向微信服务器索要临时二维码ticket凭据
+     *
+     * @return
+     */
+    @GetMapping("/getQrcodeTicket")
+    public JSONObject getQrcodeTicket(){
+        JSONObject response = weChatService.getAccessToken();
+        String accessToken = response.get("access_token").toString();
+
+        logger.info("获取到的 access_token 值为：{}", accessToken);
+
+        return weChatService.getQrcodeTicket(accessToken);
     }
 }

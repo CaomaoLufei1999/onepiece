@@ -7,7 +7,7 @@ import com.alibaba.fastjson.JSONObject;
  * @作者 天天发呆的程序员
  * @创建时间 2022-05-24
  */
-public interface WeChartService {
+public interface WeChatService {
     /**
      * 验证消息的确来自微信服务器
      *
@@ -19,12 +19,18 @@ public interface WeChartService {
     String verify(String signature, String timestamp, String nonce, String echostr);
 
     /**
-     * 向微信服务器索要AccessToken凭据
+     * 向微信服务器索要AccessToken访问了令牌
      *
-     * @param grantType 获取access_token时需要填写该参数值为：client_credential
-     * @param appId     公众号appId
-     * @param secret    公众号密钥
      * @return
      */
-    JSONObject getAccessToken(String grantType, String appId, String secret);
+    JSONObject getAccessToken();
+
+
+    /**
+     * 通过访问令牌，向微信服务器索要临时二维码ticket凭据
+     *
+     * @param accessToken 访问令牌
+     * @return
+     */
+    JSONObject getQrcodeTicket(String accessToken);
 }

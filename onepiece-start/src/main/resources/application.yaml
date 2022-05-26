@@ -9,7 +9,13 @@ server:
   servlet:
     context-path: /onepiece                 # 项目base路径名称
 
-wechart:
+wechat:
   token: onepiece                           # 签名
-  appid: wx92d68f8c12fddbbb                 # 微信公众号appId
+  appId: wx92d68f8c12fddbbb                 # 微信公众号appId
   secret: eaaa2c0b1940ec3851d24b60189240f4  # 微信公众号密钥
+  expireSeconds: 180                        # 二维码有效时间
+  actionName: QR_SCENE                      # 二维码类型：QR_SCENE为临时的整型参数值，QR_STR_SCENE为临时的字符串参数值，QR_LIMIT_SCENE为永久的整型参数值，QR_LIMIT_STR_SCENE为永久的字符串参数值
+  sceneId: 9999                             # 场景值ID: 临时二维码时为32位非0整型，永久二维码时最大值为100000（目前参数只支持1--100000）
+  sceneStr: ONEPIECE                        # 场景值ID（字符串形式的ID），字符串类型，长度限制为1到64
+  grantType: client_credential              # 获取access_token时需要填写该参数值为：client_credential
+
