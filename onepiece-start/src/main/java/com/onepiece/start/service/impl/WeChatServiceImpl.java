@@ -64,13 +64,17 @@ public class WeChatServiceImpl implements WeChatService {
      */
     private static final String GET_QRCODE_URL = "https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=%s";
 
+    /**
+     * 获取微信用户基本信息url
+     */
+    private static final String GET_USERINFO_URL = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=%s&openid=%s&lang=zh_CN";
+
     @Override
     public String verify(String signature, String timestamp, String nonce, String echostr) {
         List<String> list = new ArrayList();
         list.add(nonce);
         list.add(timestamp);
         list.add(token);
-
 
         // 将token、timestamp、nonce三个参数进行字典序排序
         Collections.sort(list);
@@ -84,10 +88,10 @@ public class WeChatServiceImpl implements WeChatService {
     public JSONObject getAccessToken() {
         // 构建url请求
         String url = String.format(GET_ACCESS_TOKEN_URL, grantType, appId, secret);
+        // 发送请求
         String responseStr = httpApiService.doGet(url);
 
         logger.info("获取access_token访问令牌请求结果：{}", responseStr);
-        // 发送请求
         return JSONObject.parseObject(responseStr);
     }
 
@@ -109,6 +113,18 @@ public class WeChatServiceImpl implements WeChatService {
         // 发送请求
         String responseStr = httpApiService.doPost(url, requestJson.toJSONString());
         logger.info("获取登录二维码ticket凭据请求结果：{}", responseStr);
+
+        return JSONObject.parseObject(responseStr);
+    }
+
+    @Override
+    public JSONObject getUserInfo(String accessToken, String openId) {
+        // 构建url请求
+        String url = String.format(GET_USERINFO_URL, accessToken, openId);
+        // 发送请求
+        String responseStr = httpApiService.doGet(url);
+
+        logger.info("通过accessToken和openId获取微信用户信息：{}", responseStr);
 
         return JSONObject.parseObject(responseStr);
     }

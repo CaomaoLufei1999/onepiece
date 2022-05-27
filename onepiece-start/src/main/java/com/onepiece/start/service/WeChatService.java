@@ -19,7 +19,7 @@ public interface WeChatService {
     String verify(String signature, String timestamp, String nonce, String echostr);
 
     /**
-     * 向微信服务器索要AccessToken访问了令牌
+     * 向微信服务器索要accessToken访问了令牌
      *
      * @return
      */
@@ -33,4 +33,13 @@ public interface WeChatService {
      * @return
      */
     JSONObject getQrcodeTicket(String accessToken);
+
+    /**
+     * 通过openId、和accessToken令牌，获取微信用户基本信息
+     *
+     * @param accessToken
+     * @param openId
+     * @return
+     */
+    JSONObject getUserInfo(String accessToken, String openId);
 }

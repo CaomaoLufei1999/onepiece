@@ -1,14 +1,14 @@
 package com.onepiece.start.controller.wechart;
 
 import com.alibaba.fastjson.JSONObject;
+import com.onepiece.common.utils.XmlUtil;
 import com.onepiece.start.service.HttpApiService;
 import com.onepiece.start.service.WeChatService;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @描述 对接微信相关Controller
@@ -35,8 +35,37 @@ public class WeChatController {
      * @param nonce     随机数
      * @param echostr   随机字符串
      */
-    @GetMapping("/verify")
+    @GetMapping("/message")
     public String verify(String signature, String timestamp, String nonce, String echostr) {
+
+        // sha1加密后得到的字符串
+        String verify = weChatService.verify(signature, timestamp, nonce, echostr);
+
+        // 加密后的字符串和signature进行对比校验
+        if (verify.equals(signature)) {
+            logger.info("===================签名对比校验成功，微信授权接入生效===================");
+            return echostr;
+        } else {
+            logger.error("===================签名对比校验失败，微信授权接入失败===================");
+            return null;
+        }
+    }
+
+
+    @PostMapping("/message")
+    public String notify(@RequestBody String xmlData, String signature, String timestamp, String nonce, String echostr) {
+        // 获取access_token令牌
+        JSONObject response = weChatService.getAccessToken();
+        String accessToken = response.get("access_token").toString();
+
+        // xml字符串转json对象
+        JSONObject xmlToJson = XmlUtil.xmlToJson(xmlData);
+        logger.info("微信公众号推送的XML消息体转JSON：{}", xmlToJson);
+
+        String openId = (String) xmlToJson.get("FromUserName");
+        if (StringUtils.isNotBlank(openId)){
+            JSONObject userInfo = weChatService.getUserInfo(accessToken, openId);
+        }
 
         // sha1加密后得到的字符串
         String verify = weChatService.verify(signature, timestamp, nonce, echostr);
