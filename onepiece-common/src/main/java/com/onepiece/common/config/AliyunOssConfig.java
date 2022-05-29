@@ -16,7 +16,7 @@ import org.springframework.context.annotation.PropertySource;
  */
 @Configuration // 声明配置类，放入Spring容器
 @PropertySource(value = {"classpath:application-aliyun-oss.properties"}) // 指定配置文件位置
-@ConfigurationProperties(prefix = "aliyun")
+@ConfigurationProperties(prefix = "aliyun.oss")
 @Data
 @Accessors(chain = true)
 public class AliyunOssConfig {

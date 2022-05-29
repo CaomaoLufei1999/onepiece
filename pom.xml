@@ -19,16 +19,30 @@
         <spring-boot-starter-web.version>2.3.3.RELEASE</spring-boot-starter-web.version>
         <spring-boot-starter-devtools.version>2.3.3.RELEASE</spring-boot-starter-devtools.version>
         <spring-boot-starter-test.version>2.3.3.RELEASE</spring-boot-starter-test.version>
+        <spring-boot-starter-redis.version>2.3.3.RELEASE</spring-boot-starter-redis.version>
         <lombok.version>1.18.18</lombok.version>
         <http-client.version>4.5.13</http-client.version>
         <fast-json.version>1.2.83</fast-json.version>
         <commons-lang3.version>3.4</commons-lang3.version>
         <aliyun-oss.version>3.10.2</aliyun-oss.version>
         <joda-time.version>2.10.1</joda-time.version>
+        <aliyun-sms.version>4.5.3</aliyun-sms.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <!-- aliyun sms SDK -->
+            <dependency>
+                <groupId>com.aliyun</groupId>
+                <artifactId>aliyun-java-sdk-core</artifactId>
+                <version>${aliyun-sms.version}</version>
+            </dependency>
+            <!-- redis -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-redis</artifactId>
+                <version>${spring-boot-starter-redis.version}</version>
+            </dependency>
             <!-- Spring Boot -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
