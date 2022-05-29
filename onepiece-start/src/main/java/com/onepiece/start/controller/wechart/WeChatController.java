@@ -51,9 +51,8 @@ public class WeChatController {
         }
     }
 
-
     @PostMapping("/message")
-    public String notify(@RequestBody String xmlData, String signature, String timestamp, String nonce, String echostr) {
+    public JSONObject notify(@RequestBody String xmlData) {
         // 获取access_token令牌
         JSONObject response = weChatService.getAccessToken();
         String accessToken = response.get("access_token").toString();
@@ -63,21 +62,12 @@ public class WeChatController {
         logger.info("微信公众号推送的XML消息体转JSON：{}", xmlToJson);
 
         String openId = (String) xmlToJson.get("FromUserName");
-        if (StringUtils.isNotBlank(openId)){
-            JSONObject userInfo = weChatService.getUserInfo(accessToken, openId);
+        JSONObject userInfo = null;
+        if (StringUtils.isNotBlank(openId)) {
+            userInfo = weChatService.getUserInfo(accessToken, openId);
         }
 
-        // sha1加密后得到的字符串
-        String verify = weChatService.verify(signature, timestamp, nonce, echostr);
-
-        // 加密后的字符串和signature进行对比校验
-        if (verify.equals(signature)) {
-            logger.info("===================签名对比校验成功，微信授权接入生效===================");
-            return echostr;
-        } else {
-            logger.error("===================签名对比校验失败，微信授权接入失败===================");
-            return null;
-        }
+        return userInfo;
     }
 
     /**
@@ -86,7 +76,7 @@ public class WeChatController {
      * @return
      */
     @GetMapping("/getQrcodeTicket")
-    public JSONObject getQrcodeTicket(){
+    public JSONObject getQrcodeTicket() {
         JSONObject response = weChatService.getAccessToken();
         String accessToken = response.get("access_token").toString();
 
