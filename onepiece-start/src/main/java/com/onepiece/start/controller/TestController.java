@@ -1,6 +1,8 @@
 package com.onepiece.start.controller;
 
 import com.onepiece.common.config.AliyunSmsConfig;
+import com.onepiece.common.utils.MailClientUtil;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,6 +30,9 @@ public class TestController {
     @Autowired
     private RedisTemplate<String, String> redisTemplate;
 
+    @Autowired
+    private MailClientUtil mailClientUtil;
+
     @RequestMapping("/hello")
     public String hello() {
         return "Hello World";
@@ -40,12 +45,12 @@ public class TestController {
      * @return
      */
     @GetMapping("/send/{phone}")
-    public String sendCode(@PathVariable("phone") String phone) {
+    public String sendSms(@PathVariable("phone") String phone) {
         // 根据手机号从redis中拿验证码
         String code = redisTemplate.opsForValue().get(phone);
-//        if (!StringUtils.isEmpty(code)) {
-//            return phone + " : " + code + "已经存在，还没有过期！";
-//        }
+        if (!StringUtils.isEmpty(code)) {
+            return phone + " : " + code + "已经存在，还没有过期！";
+        }
 
         // 如果redis 中根据手机号拿不到验证码，则生成6位随机验证码
         code = String.valueOf(UUID.randomUUID().toString().hashCode()).substring(0, 6);
@@ -64,5 +69,21 @@ public class TestController {
         } else {
             return phone + " ： " + code + "发送失败！";
         }
+    }
+
+    /**
+     * 测试邮件发送
+     *
+     * @param mail
+     * @return
+     */
+    @GetMapping("/sendMail/{mail}")
+    public String sendMail(@PathVariable("mail") String mail) {
+
+        Boolean result = mailClientUtil.sendMail(mail, "测试邮件发送", "xxx");
+        if (result){
+            return "测试邮件发送成功！";
+        }
+        return "测试邮件发送失败！";
     }
 }

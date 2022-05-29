@@ -1,8 +1,27 @@
 # httpclient配置
 http:
-  maxTotal: 100                         # 最大连接数
-  defaultMaxPerRoute: 20                # 并发数
-  connectTimeout: 1000                  # 创建连接的最长时间
-  connectionRequestTimeout: 1500        # 从连接池中获取到连接的最长时间
-  socketTimeout: 10000                  # 数据传输的最长时间
-  staleConnectionCheckEnabled: true     # 提交请求前测试连接是否可用
+  maxTotal: 100                               # 最大连接数
+  defaultMaxPerRoute: 20                      # 并发数
+  connectTimeout: 1000                        # 创建连接的最长时间
+  connectionRequestTimeout: 1500              # 从连接池中获取到连接的最长时间
+  socketTimeout: 10000                        # 数据传输的最长时间
+  staleConnectionCheckEnabled: true           # 提交请求前测试连接是否可用
+
+# spring 相关配置
+spring:
+  # 发送者邮箱相关配置
+  mail:
+    host: smtp.163.com                        # SMTP服务器域名
+    default-encoding: UTF-8                   # 编码集
+    username: caoshipeng1999@163.com          # 邮箱用户名
+    password: TXTDKBULMRLEVJSH                # 授权码(注意不是邮箱密码！)
+    protocol: smtps                           # 协议：smtps
+    # 详细配置
+    properties:
+      mail:
+        smtp:
+          # 设置是否需要认证,如果为true,那么用户名和密码就必须的,如果设置false,可以不设置用户名和密码(前提要知道对接的平台是否支持无密码进行访问的)
+          auth: true
+          starttls:
+            enable: true
+            required: true

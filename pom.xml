@@ -20,6 +20,7 @@
         <spring-boot-starter-devtools.version>2.3.3.RELEASE</spring-boot-starter-devtools.version>
         <spring-boot-starter-test.version>2.3.3.RELEASE</spring-boot-starter-test.version>
         <spring-boot-starter-redis.version>2.3.3.RELEASE</spring-boot-starter-redis.version>
+        <spring-boot-starter-mail.version>2.3.3.RELEASE</spring-boot-starter-mail.version>
         <lombok.version>1.18.18</lombok.version>
         <http-client.version>4.5.13</http-client.version>
         <fast-json.version>1.2.83</fast-json.version>
@@ -31,6 +32,12 @@
 
     <dependencyManagement>
         <dependencies>
+            <!-- java mail -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-mail</artifactId>
+                <version>${spring-boot-starter-mail.version}</version>
+            </dependency>
             <!-- aliyun sms SDK -->
             <dependency>
                 <groupId>com.aliyun</groupId>
