@@ -1,4 +1,4 @@
-package com.onepiece.common.client;
+package com.onepiece.common.config;
 
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Configuration;
  * @创建时间 2022-05-25
  */
 @Configuration
-public class HttpClient {
+public class HttpClientConfig {
 
     @Value("${http.maxTotal}")
     private Integer maxTotal;

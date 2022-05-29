@@ -2,7 +2,6 @@ package com.onepiece.start.controller.wechart;
 
 import com.alibaba.fastjson.JSONObject;
 import com.onepiece.common.utils.XmlUtil;
-import com.onepiece.start.service.HttpApiService;
 import com.onepiece.start.service.WeChatService;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -23,9 +22,6 @@ public class WeChatController {
 
     @Autowired
     private WeChatService weChatService;
-
-    @Autowired
-    private HttpApiService httpApiService;
 
     /**
      * 验证消息的确来自微信服务器

@@ -23,6 +23,8 @@
         <http-client.version>4.5.13</http-client.version>
         <fast-json.version>1.2.83</fast-json.version>
         <commons-lang3.version>3.4</commons-lang3.version>
+        <aliyun-oss.version>3.10.2</aliyun-oss.version>
+        <joda-time.version>2.10.1</joda-time.version>
     </properties>
 
     <dependencyManagement>
@@ -77,6 +79,18 @@
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
                 <version>${commons-lang3.version}</version>
+            </dependency>
+            <!-- oss -->
+            <dependency>
+                <groupId>com.aliyun.oss</groupId>
+                <artifactId>aliyun-sdk-oss</artifactId>
+                <version>${aliyun-oss.version}</version>
+            </dependency>
+            <!-- joda-time -->
+            <dependency>
+                <groupId>joda-time</groupId>
+                <artifactId>joda-time</artifactId>
+                <version>${joda-time.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
