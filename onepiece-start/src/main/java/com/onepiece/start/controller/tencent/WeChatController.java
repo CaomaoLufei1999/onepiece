@@ -1,4 +1,4 @@
-package com.onepiece.start.controller.wechart;
+package com.onepiece.start.controller.tencent;
 
 import com.alibaba.fastjson.JSONObject;
 import com.onepiece.common.utils.XmlUtil;

@@ -20,7 +20,7 @@ spring:
 server:
   port: 80                                  # 端口号
   servlet:
-    context-path: /onepiece                 # 项目base路径名称
+    context-path: /                         # 项目base路径名称
 
 wechat:
   token: onepiece                           # 签名
@@ -32,3 +32,7 @@ wechat:
   sceneStr: ONEPIECE                        # 场景值ID（字符串形式的ID），字符串类型，长度限制为1到64
   grantType: client_credential              # 获取access_token时需要填写该参数值为：client_credential
 
+qq:
+  appId: 102007859
+  appSecret: 2yf8OQFsIUSowpTS
+  redirectUrl: http://onepiece-demo.natapp1.cc/tools/code-paste
