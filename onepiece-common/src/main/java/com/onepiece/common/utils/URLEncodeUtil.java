@@ -12,7 +12,10 @@ public class URLEncodeUtil {
     private final static String ENCODE = "UTF-8";
 
     /**
-     * URL 解码
+     * URL解码
+     *
+     * @param str
+     * @return
      */
     public static String getURLDecoderString(String str) {
         String result = "";
@@ -28,7 +31,10 @@ public class URLEncodeUtil {
     }
 
     /**
-     * URL 转码
+     * URL转码加密
+     *
+     * @param str
+     * @return
      */
     public static String getURLEncoderString(String str) {
         String result = "";

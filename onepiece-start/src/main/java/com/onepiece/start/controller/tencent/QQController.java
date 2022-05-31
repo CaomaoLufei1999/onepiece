@@ -1,7 +1,9 @@
 package com.onepiece.start.controller.tencent;
 
-import com.onepiece.common.vo.QQUrlVO;
-import com.onepiece.start.service.impl.QQServiceImpl;
+import com.alibaba.fastjson.JSONObject;
+import com.onepiece.start.service.QQService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,16 +21,29 @@ import javax.servlet.http.HttpServletResponse;
 @RequestMapping("/qq")
 public class QQController {
 
+    private static final Logger logger = LoggerFactory.getLogger(QQController.class);
+
     @Autowired
-    private QQServiceImpl qqService;
+    private QQService qqService;
 
     @GetMapping("/auth/callback")
-    public String fallback(HttpServletRequest request, HttpServletResponse response){
-        return "QQ登录回调信息";
+    public JSONObject fallback(HttpServletRequest request, HttpServletResponse response) {
+        String code = request.getParameter("code");
+        logger.info("用户点击登录链接，向腾讯开放平台申请登录校验成功后，获取到的code：{}", code);
+
+        String accessToken = (String) qqService.getAccessToken(code).get("access_token");
+        String openid = (String) qqService.getOpenIdByAccessToken(accessToken).get("openid");
+
+        return qqService.getUserInfo(accessToken, openid);
     }
 
-    @GetMapping("/getQQUrl")
-    public QQUrlVO getQQUrl() {
-        return qqService.getQQUrl();
+    /**
+     * 获取QQ授权登录URL返回给前端
+     *
+     * @return
+     */
+    @GetMapping("/getLoginUrl")
+    public String getLoginUrl() {
+        return qqService.getLoginUrl();
     }
 }

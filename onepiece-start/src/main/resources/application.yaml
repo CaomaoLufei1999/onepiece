@@ -20,7 +20,7 @@ spring:
 server:
   port: 80                                  # 端口号
   servlet:
-    context-path: /                         # 项目base路径名称
+    context-path: /onepiece                 # 项目base路径名称
 
 wechat:
   token: onepiece                           # 签名
@@ -35,4 +35,4 @@ wechat:
 qq:
   appId: 102007859
   appSecret: 2yf8OQFsIUSowpTS
-  redirectUrl: http://onepiece-demo.natapp1.cc/tools/code-paste
+  redirectUrl: http://onepiece-data.natapp1.cc/onepiece/qq/auth/callback
