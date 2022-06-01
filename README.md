@@ -8,6 +8,7 @@
 * Mybatis  
 * ElasticSearch
 * SpringSecurity
+* Kafka
 * Dubbo 3.0
 * Nacos  
 * MySQL 5.7

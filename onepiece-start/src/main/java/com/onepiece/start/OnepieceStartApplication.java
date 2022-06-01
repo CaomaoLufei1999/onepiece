@@ -1,5 +1,6 @@
 package com.onepiece.start;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -10,7 +11,8 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
  * @创建时间 2022-05-24
  */
 @EnableConfigurationProperties
-@SpringBootApplication(scanBasePackages = {"com.onepiece.start","com.onepiece.common"})
+@MapperScan("com.onepiece.start.mapper")
+@SpringBootApplication(scanBasePackages = {"com.onepiece.start", "com.onepiece.common"})
 public class OnepieceStartApplication {
 
     public static void main(String[] args) {

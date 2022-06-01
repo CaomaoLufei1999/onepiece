@@ -1,7 +1,9 @@
 package com.onepiece.start.controller;
 
 import com.onepiece.common.config.AliyunSmsConfig;
+import com.onepiece.common.pojo.UserInfo;
 import com.onepiece.common.utils.MailClientUtil;
+import com.onepiece.start.mapper.UserInfoMapper;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -33,9 +35,17 @@ public class TestController {
     @Autowired
     private MailClientUtil mailClientUtil;
 
+    @Autowired
+    private UserInfoMapper userInfoMapper;
+
     @RequestMapping("/hello")
     public String hello() {
         return "Hello World";
+    }
+
+    @GetMapping("/getAllUser")
+    public UserInfo getAllUserInfo(){
+        return userInfoMapper.getUserInfo();
     }
 
     /**

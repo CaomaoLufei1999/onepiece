@@ -7,7 +7,7 @@ import lombok.ToString;
 import lombok.experimental.Accessors;
 
 /**
- * @描述
+ * @描述  从QQ互联获取到的登录用户基本信息
  * @作者 天天发呆的程序员
  * @创建时间 2022-05-30
  */

@@ -58,6 +58,7 @@ public class WeChatController {
         logger.info("微信公众号推送的XML消息体转JSON：{}", xmlToJson);
 
         String openId = (String) xmlToJson.get("FromUserName");
+
         JSONObject userInfo = null;
         if (StringUtils.isNotBlank(openId)) {
             userInfo = weChatService.getUserInfo(accessToken, openId);

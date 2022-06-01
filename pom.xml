@@ -3,6 +3,11 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.3.RELEASE</version>
+    </parent>
     <packaging>pom</packaging>
     <modules>
         <module>onepiece-common</module>
@@ -16,11 +21,13 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <spring-boot-starter.version>2.3.3.RELEASE</spring-boot-starter.version>
+        <spring-boot-maven-plugin.version>2.3.3.RELEASE</spring-boot-maven-plugin.version>
         <spring-boot-starter-web.version>2.3.3.RELEASE</spring-boot-starter-web.version>
         <spring-boot-starter-devtools.version>2.3.3.RELEASE</spring-boot-starter-devtools.version>
         <spring-boot-starter-test.version>2.3.3.RELEASE</spring-boot-starter-test.version>
         <spring-boot-starter-redis.version>2.3.3.RELEASE</spring-boot-starter-redis.version>
         <spring-boot-starter-mail.version>2.3.3.RELEASE</spring-boot-starter-mail.version>
+        <mybatis-spring-boot-starter.version>2.2.2</mybatis-spring-boot-starter.version>
         <lombok.version>1.18.18</lombok.version>
         <http-client.version>4.5.13</http-client.version>
         <fast-json.version>1.2.83</fast-json.version>
@@ -28,10 +35,35 @@
         <aliyun-oss.version>3.10.2</aliyun-oss.version>
         <joda-time.version>2.10.1</joda-time.version>
         <aliyun-sms.version>4.5.3</aliyun-sms.version>
+        <datasource-druid.version>1.2.8</datasource-druid.version>
+        <mysql-connector-java.version>8.0.21</mysql-connector-java.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <!-- mybatis -->
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatis-spring-boot-starter.version}</version>
+            </dependency>
+            <!-- druid -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${datasource-druid.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${datasource-druid.version}</version>
+            </dependency>
+            <!-- mysql -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql-connector-java.version}</version>
+            </dependency>
             <!-- java mail -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
@@ -121,6 +153,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot-maven-plugin.version}</version>
                 <configuration>
                     <excludes>
                         <exclude>
