@@ -49,4 +49,12 @@ public interface QQService {
      * @return
      */
     QQUserInfoDTO getUserInfo(String accessToken, String openId);
+
+    /**
+     * QQ登录/注册
+     *
+     * @param userInfoDTO
+     * @return
+     */
+    Integer QQLogin(String openId, QQUserInfoDTO userInfoDTO);
 }

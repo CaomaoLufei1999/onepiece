@@ -27,14 +27,19 @@ public class QQController {
     private QQService qqService;
 
     @GetMapping("/auth/callback")
-    public QQUserInfoDTO fallback(HttpServletRequest request, HttpServletResponse response) {
+    public String fallback(HttpServletRequest request, HttpServletResponse response) {
         String code = request.getParameter("code");
         logger.info("用户点击登录链接，向腾讯开放平台申请登录校验成功后，获取到的code：{}", code);
 
         String accessToken = (String) qqService.getAccessToken(code).get("access_token");
-        String openid = (String) qqService.getOpenIdByAccessToken(accessToken).get("openid");
-
-        return qqService.getUserInfo(accessToken, openid);
+        String openId = (String) qqService.getOpenIdByAccessToken(accessToken).get("openid");
+        QQUserInfoDTO qqUserInfoDTO = qqService.getUserInfo(accessToken, openId);
+        // QQ登录
+        Integer userId = qqService.QQLogin(openId, qqUserInfoDTO);
+        if (userId != null){
+            return "登录成功,userId为：: " + userId;
+        }
+        return "登录失败";
     }
 
     /**

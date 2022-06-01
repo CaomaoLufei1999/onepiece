@@ -43,11 +43,6 @@ public class TestController {
         return "Hello World";
     }
 
-    @GetMapping("/getAllUser")
-    public UserInfo getAllUserInfo(){
-        return userInfoMapper.getUserInfo();
-    }
-
     /**
      * 测试短信发送
      *

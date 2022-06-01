@@ -11,5 +11,19 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserInfoMapper {
 
-    UserInfo getUserInfo();
+    /**
+     * 根据openId查寻用户信息
+     *
+     * @param openId
+     * @return
+     */
+    UserInfo getUserInfoByOpenId(String openId);
+
+    /**
+     * QQ用户信息注册
+     *
+     * @param userInfo
+     * @return
+     */
+    Integer QQRegister(UserInfo userInfo);
 }

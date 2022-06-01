@@ -1,27 +1,38 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.onepiece.start.mapper.UserInfoMapper">
-    <select id="getUserInfo" resultType="com.onepiece.common.pojo.UserInfo">
-        select user_id,nickname from user_info where user_id = 1
+    <select id="getUserInfoByOpenId" resultType="com.onepiece.common.pojo.UserInfo">
+        select *
+        from user_info
+        where openid = #{openId}
     </select>
 
-<!--    <insert id="insert" parameterType="com.haust.redisdemo.domain.User">-->
-<!--        insert sys_user(id,user_name) values(#{id},#{userName})-->
-<!--    </insert>-->
+    <insert id="QQRegister" parameterType="com.onepiece.common.pojo.UserInfo" useGeneratedKeys="true"
+            keyProperty="userId" keyColumn="user_id">
+        INSERT INTO `onepiece`.`user_info`(`openid`, `unionid`, `nickname`, `sex`, `country`, `province`,
+                                           `city`, `address`, `account_binding_type`, `head_img`, `phone`, `email`,
+                                           `username`, `password`, `security_questions`, `interest_tags`,
+                                           `friend_links`, `description`, `privilege`, `identity`, `level`, `points`,
+                                           `create_time`)
+        VALUES (#{openid}, #{unionid}, #{nickname}, #{sex}, #{country}, #{province}, #{city}, #{address},
+                #{accountBindingType}, #{headImg}, #{phone}, #{email}, #{username}, #{password}, #{securityQuestions},
+                #{interestTags}, #{friendLinks}, #{description}, #{privilege}, #{identity}, #{level}, #{points},
+                #{createTime});
+    </insert>
 
-<!--    <update id="update" parameterType="com.haust.redisdemo.domain.User">-->
-<!--        update sys_user set user_name = #{userName} where id=#{id}-->
-<!--    </update>-->
+    <!--    <update id="update" parameterType="com.haust.redisdemo.domain.User">-->
+    <!--        update sys_user set user_name = #{userName} where id=#{id}-->
+    <!--    </update>-->
 
-<!--    <delete id="delete" parameterType="string">-->
-<!--        delete from sys_user where id= #{id}-->
-<!--    </delete>-->
+    <!--    <delete id="delete" parameterType="string">-->
+    <!--        delete from sys_user where id= #{id}-->
+    <!--    </delete>-->
 
-<!--    <select id="find" resultType="com.haust.redisdemo.domain.User" parameterType="string">-->
-<!--        select id,user_name from sys_user where id=#{id}-->
-<!--    </select>-->
+    <!--    <select id="find" resultType="com.haust.redisdemo.domain.User" parameterType="string">-->
+    <!--        select id,user_name from sys_user where id=#{id}-->
+    <!--    </select>-->
 
-<!--    <delete id="deleteAll">-->
-<!--        delete from sys_user-->
-<!--    </delete>-->
+    <!--    <delete id="deleteAll">-->
+    <!--        delete from sys_user-->
+    <!--    </delete>-->
 </mapper>
