@@ -31,8 +31,8 @@ mybatis:
 # 参考微信公众平台官网文档：https://developers.weixin.qq.com/doc/offiaccount/Getting_Started/Overview.html
 wechat:
   token: onepiece                                         # 签名
-  appId: wx92d68f8c12fddbbb                               # 微信公众号appId
-  secret: eaaa2c0b1940ec3851d24b60189240f4                # 微信公众号密钥
+  appId: wx92dxxxxxxxfddbbb                               # 微信公众号appId
+  secret: eaaaxxxxxxxxxxxxxxxxxxxxxxx240f4                # 微信公众号密钥
   expireSeconds: 180                                      # 二维码有效时间
   actionName: QR_SCENE                                    # 二维码类型：QR_SCENE，QR_STR_SCENE，QR_LIMIT_SCENE，QR_LIMIT_STR_SCENE
   sceneId: 9999                                           # 场景值ID: 临时二维码时为32位非0整型，永久二维码时最大值为100000（目前参数只支持1--100000）
@@ -41,6 +41,6 @@ wechat:
 
 # 参考QQ互联官网文档：https://wiki.connect.qq.com/
 qq:
-  appId: 102007859
-  appSecret: 2yf8OQFsIUSowpTS
-  redirectUrl: http://onepiece-data.natapp1.cc/onepiece/qq/auth/callback
+  appId: 1xxxxx9
+  appSecret: 2yfxxxxxxxxwpTS
+  redirectUrl: http://xxxxxxx/onepiece/qq/auth/callback
