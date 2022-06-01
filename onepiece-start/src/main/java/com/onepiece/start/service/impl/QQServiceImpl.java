@@ -1,6 +1,7 @@
 package com.onepiece.start.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
+import com.onepiece.common.dto.QQUserInfoDTO;
 import com.onepiece.common.utils.URLEncodeUtil;
 import com.onepiece.start.service.HttpApiService;
 import com.onepiece.start.service.QQService;
@@ -108,14 +109,15 @@ public class QQServiceImpl implements QQService {
     }
 
     @Override
-    public JSONObject getUserInfo(String accessToken, String openId) {
+    public QQUserInfoDTO getUserInfo(String accessToken, String openId) {
         // 构建url请求
         String url = String.format(GET_USERINFO_URL, accessToken, appId, openId);
         // 发送请求
         String responseStr = httpApiService.doGet(url);
 
-        logger.info("请求腾讯开放平台获取登录用户的基本信息: {}", responseStr);
-        return JSONObject.parseObject(responseStr);
+        QQUserInfoDTO qqUserInfoDTO = JSONObject.parseObject(responseStr, QQUserInfoDTO.class);
+        logger.info("请求腾讯开放平台获取登录用户的基本信息: {}", qqUserInfoDTO);
+        return qqUserInfoDTO;
     }
 
 //    public Map<String, Object> getToken(String code) throws Exception {

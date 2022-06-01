@@ -1,5 +1,6 @@
 package com.onepiece.common.dto;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,22 +20,45 @@ import lombok.experimental.Accessors;
 public class QQUserInfoDTO {
     private Integer ret;
     private String msg;
-    private Integer is_lost;
+
+    @JSONField(name = "is_lost")
+    private Integer isLost;
+
     private String nickname;
     private String gender;
     private String province;
     private String city;
     private String year;
     private String constellation;
-    private String figureurl;
-    private String figureurl_1;
-    private String figureurl_2;
-    private String figureurl_qq;
-    private String figureurl_qq_1;
-    private String figureurl_qq_2;
-    private String is_yellow_vip;
+
+    @JSONField(name = "figureurl")
+    private String figureUrl;
+
+    @JSONField(name = "figureurl_1")
+    private String figureUrl1;
+
+    @JSONField(name = "figureurl_2")
+    private String figureUrl2;
+
+    @JSONField(name = "figureurl_qq")
+    private String figureUrlQQ;
+
+    @JSONField(name = "figureurl_qq_1")
+    private String figureUrlQQ1;
+
+    @JSONField(name = "figureurl_qq_2")
+    private String figureUrlQQ2;
+
+    @JSONField(name = "is_yellow_vip")
+    private String isYellowVip;
+
     private String vip;
-    private String yellow_vip_level;
+
+    @JSONField(name = "yellow_vip_level")
+    private String yellowVipLevel;
+
     private String level;
-    private String is_yellow_year_vip;
+
+    @JSONField(name = "is_yellow_year_vip")
+    private String isYellowYearVip;
 }

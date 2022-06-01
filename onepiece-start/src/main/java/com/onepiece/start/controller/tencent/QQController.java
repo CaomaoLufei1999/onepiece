@@ -1,6 +1,6 @@
 package com.onepiece.start.controller.tencent;
 
-import com.alibaba.fastjson.JSONObject;
+import com.onepiece.common.dto.QQUserInfoDTO;
 import com.onepiece.start.service.QQService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,7 +27,7 @@ public class QQController {
     private QQService qqService;
 
     @GetMapping("/auth/callback")
-    public JSONObject fallback(HttpServletRequest request, HttpServletResponse response) {
+    public QQUserInfoDTO fallback(HttpServletRequest request, HttpServletResponse response) {
         String code = request.getParameter("code");
         logger.info("用户点击登录链接，向腾讯开放平台申请登录校验成功后，获取到的code：{}", code);
 
