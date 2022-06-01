@@ -13,8 +13,8 @@ spring:
   mail:
     host: smtp.163.com                        # SMTP服务器域名
     default-encoding: UTF-8                   # 编码集
-    username: caoshipeng1999@163.com          # 邮箱用户名
-    password: TXTDKBULMRLEVJSH                # 授权码(注意不是邮箱密码！)
+    username: xxxxxxxxxxxxxx@163.com          # 邮箱用户名
+    password: xxxxxxxxxxxxxxxx                # 授权码(注意不是邮箱密码！)
     protocol: smtps                           # 协议：smtps
     # 详细配置
     properties:
