@@ -3,8 +3,8 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: root
-    password: root
+    username: xxxx
+    password: xxxx
     url: jdbc:mysql://localhost:3306/onepiece?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC
     druid:
       initialSize: 5                           # 初始连接数
@@ -24,8 +24,8 @@ spring:
         enabled: true
         allow:                                 # 设置白名单，不填则允许所有访问
         url-pattern: /druid/*
-        login-username: onepiece-admin         # 控制台管理用户名和密码
-        login-password: onepiece-admin
+        login-username: xxxxxxxxxxxxxx         # 控制台管理用户名和密码
+        login-password: xxxxxxxxxxxxxx
       filter:
         stat:
           enabled: true
