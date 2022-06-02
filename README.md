@@ -8,6 +8,7 @@
 * Mybatis  
 * ElasticSearch
 * SpringSecurity
+* JWT  
 * Kafka
 * Dubbo 3.0
 * Nacos  
@@ -15,3 +16,6 @@
 * Redis
 * OSS
 * SMS
+* Docker
+* Jenkins
+* K8S
