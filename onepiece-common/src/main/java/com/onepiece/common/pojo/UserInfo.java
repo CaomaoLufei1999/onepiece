@@ -139,4 +139,9 @@ public class UserInfo implements Serializable {
      * 注册时间
      */
     private Date createTime;
+
+    /**
+     * 账号是否可用, 默认为1（可用）
+     */
+    private String enabled;
 }

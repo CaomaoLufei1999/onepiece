@@ -1,5 +1,7 @@
 # spring相关配置
 spring:
+  application:
+    name: onepiece                                        # 应用名称
   profiles:
     active: common,druid                                  # 激活其他application配置文件
   # redis 相关配置

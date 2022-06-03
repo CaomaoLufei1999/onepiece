@@ -27,6 +27,7 @@
         <spring-boot-starter-test.version>2.3.3.RELEASE</spring-boot-starter-test.version>
         <spring-boot-starter-redis.version>2.3.3.RELEASE</spring-boot-starter-redis.version>
         <spring-boot-starter-mail.version>2.3.3.RELEASE</spring-boot-starter-mail.version>
+        <spring-boot-starter-security.version>2.3.3.RELEASE</spring-boot-starter-security.version>
         <mybatis-spring-boot-starter.version>2.2.2</mybatis-spring-boot-starter.version>
         <lombok.version>1.18.18</lombok.version>
         <http-client.version>4.5.13</http-client.version>
@@ -37,10 +38,22 @@
         <aliyun-sms.version>4.5.3</aliyun-sms.version>
         <datasource-druid.version>1.2.8</datasource-druid.version>
         <mysql-connector-java.version>8.0.21</mysql-connector-java.version>
+        <jwt-version>0.9.1</jwt-version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <!-- JWT-->
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>${jwt-version}</version>
+            </dependency>
+            <!-- Spring Security -->
+<!--            <dependency>-->
+<!--                <groupId>org.springframework.boot</groupId>-->
+<!--                <artifactId>spring-boot-starter-security</artifactId>-->
+<!--            </dependency>-->
             <!-- mybatis -->
             <dependency>
                 <groupId>org.mybatis.spring.boot</groupId>
