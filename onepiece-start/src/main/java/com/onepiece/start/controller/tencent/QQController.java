@@ -1,6 +1,8 @@
 package com.onepiece.start.controller.tencent;
 
 import com.onepiece.common.dto.QQUserInfoDTO;
+import com.onepiece.common.pojo.UserInfo;
+import com.onepiece.common.utils.JwtUtil;
 import com.onepiece.start.service.QQService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,10 +37,12 @@ public class QQController {
         String openId = (String) qqService.getOpenIdByAccessToken(accessToken).get("openid");
         QQUserInfoDTO qqUserInfoDTO = qqService.getUserInfo(accessToken, openId);
         // QQ登录
-        Integer userId = qqService.QQLogin(openId, qqUserInfoDTO);
-        if (userId != null){
-            return "登录成功,userId为：: " + userId;
+        UserInfo userInfo = qqService.QQLogin(openId, qqUserInfoDTO);
+        if (userInfo != null){
+            String jwtToken = JwtUtil.getJwtToken(userInfo);
+            return "登录成功,jwtToken为: " + jwtToken;
         }
+
         return "登录失败";
     }
 

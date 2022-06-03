@@ -129,11 +129,11 @@ public class QQServiceImpl implements QQService {
     }
 
     @Override
-    public Integer QQLogin(String openId, QQUserInfoDTO userInfoDTO) {
+    public UserInfo QQLogin(String openId, QQUserInfoDTO userInfoDTO) {
 
         UserInfo userInfo = userInfoMapper.getUserInfoByOpenId(openId);
         if (userInfo != null) {
-            return userInfo.getUserId();
+            return userInfo;
         } else {
             userInfo = new UserInfo()
                     .setOpenid(openId)
@@ -161,7 +161,7 @@ public class QQServiceImpl implements QQService {
                     .setCreateTime(new Date());
 
             Integer result = userInfoMapper.QQRegister(userInfo);
-            return userInfo.getUserId();
+            return userInfo;
         }
     }
 }

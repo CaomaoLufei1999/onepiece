@@ -2,6 +2,7 @@ package com.onepiece.start.service;
 
 import com.alibaba.fastjson.JSONObject;
 import com.onepiece.common.dto.QQUserInfoDTO;
+import com.onepiece.common.pojo.UserInfo;
 
 /**
  * @描述 对接QQ相关接口
@@ -56,5 +57,5 @@ public interface QQService {
      * @param userInfoDTO
      * @return
      */
-    Integer QQLogin(String openId, QQUserInfoDTO userInfoDTO);
+    UserInfo QQLogin(String openId, QQUserInfoDTO userInfoDTO);
 }
