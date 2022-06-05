@@ -6,6 +6,7 @@ import com.onepiece.start.service.TagInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -26,11 +27,24 @@ public class TagInfoServiceImpl implements TagInfoService {
 
     @Override
     public TagInfo addTag(String tagName, Integer categoryId, Integer status) {
-        return null;
+        TagInfo tagInfo = new TagInfo()
+                .setTagName(tagName)
+                .setCategoryId(categoryId)
+                .setIsDelete(0)
+                .setStatus(status)
+                .setCreateTime(new Date());
+
+        Integer integer = tagInfoMapper.addTag(tagInfo);
+        return tagInfo;
     }
 
     @Override
     public TagInfo getTagByName(String tagName) {
         return tagInfoMapper.getTagByName(tagName);
+    }
+
+    @Override
+    public List<TagInfo> getTagListByCategoryId(Integer categoryId) {
+        return tagInfoMapper.getTagListByCategoryId(categoryId);
     }
 }

@@ -34,7 +34,12 @@ public class TagInfo {
     /**
      * 标签所属分类ID
      */
-    private String categoryId;
+    private Integer categoryId;
+
+    /**
+     * 标签所属分类名称
+     */
+    private String categoryName;
 
     /**
      * 是否删除: 0未删除，1已删除

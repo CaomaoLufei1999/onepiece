@@ -1,6 +1,7 @@
 package com.onepiece.start.service;
 
 import com.onepiece.common.pojo.CategoryInfo;
+import com.onepiece.common.vo.CategoryInfoVO;
 
 import java.util.List;
 import java.util.Map;
@@ -17,7 +18,7 @@ public interface CategoryInfoService {
      *
      * @return
      */
-    List<CategoryInfo> getCategoryList();
+    List<CategoryInfoVO> getCategoryList();
 
     /**
      * 新增文章分类

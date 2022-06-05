@@ -35,4 +35,10 @@ public interface TagInfoService {
      */
     TagInfo getTagByName(String tagName);
 
+    /**
+     * 根据分类ID获取标签列表
+     * @param categoryId
+     * @return
+     */
+    List<TagInfo> getTagListByCategoryId(Integer categoryId);
 }

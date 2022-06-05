@@ -29,11 +29,9 @@ public class TagInfoController {
      * @return
      */
     @GetMapping("/list")
-    public JSONObject getCategoryList() {
+    public JsonResult getCategoryList() {
         List<TagInfo> tagInfoList = tagInfoService.getTagList();
-        JSONObject result = new JSONObject();
-        result.put("categoryList", tagInfoList);
-        return result;
+        return JsonResultBuilder.success(tagInfoList);
     }
 
     /**
@@ -48,12 +46,12 @@ public class TagInfoController {
         Integer categoryId = Integer.valueOf(params.get("categoryId").toString());
         Integer status = Integer.valueOf(params.get("status").toString());
 
-        // 发布文章分类之前进行查重校验
+        // 创建标签之前进行查重校验
         TagInfo tagInfoTemp = tagInfoService.getTagByName(tagName);
         if (tagInfoTemp != null){
-            return JsonResultBuilder.error("该文章标签已经存在！");
+            return JsonResultBuilder.error("该标签已经存在！");
         }else {
-            // 新增文章分类
+            // 新增标签
             TagInfo tagInfo = tagInfoService.addTag(tagName, categoryId, status);
             return JsonResultBuilder.success(tagInfo);
         }

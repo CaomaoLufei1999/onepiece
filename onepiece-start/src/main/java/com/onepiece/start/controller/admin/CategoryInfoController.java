@@ -3,6 +3,7 @@ package com.onepiece.start.controller.admin;
 import com.alibaba.fastjson.JSONObject;
 import com.onepiece.common.pojo.CategoryInfo;
 import com.onepiece.common.utils.JsonResultBuilder;
+import com.onepiece.common.vo.CategoryInfoVO;
 import com.onepiece.common.vo.JsonResult;
 import com.onepiece.start.service.CategoryInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,11 +31,9 @@ public class CategoryInfoController {
      * @return
      */
     @GetMapping("/list")
-    public JSONObject getCategoryList() {
-        List<CategoryInfo> categoryList = categoryInfoService.getCategoryList();
-        JSONObject result = new JSONObject();
-        result.put("categoryList", categoryList);
-        return result;
+    public JsonResult getCategoryList() {
+        List<CategoryInfoVO> categoryList = categoryInfoService.getCategoryList();
+        return JsonResultBuilder.success(categoryList);
     }
 
     /**

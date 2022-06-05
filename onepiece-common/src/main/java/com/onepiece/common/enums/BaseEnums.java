@@ -7,8 +7,8 @@ package com.onepiece.common.enums;
  */
 public enum BaseEnums {
 
-    SUCCESS("操作成功", 2000),
-    ERROR("操作失败", 5000);
+    SUCCESS("请求成功", 2000),
+    ERROR("请求失败", 5000);
 
     private String msg;
     private Integer code;
