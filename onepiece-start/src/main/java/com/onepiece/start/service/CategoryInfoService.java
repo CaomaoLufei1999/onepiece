@@ -27,4 +27,12 @@ public interface CategoryInfoService {
      * @return
      */
     CategoryInfo addCategory(String categoryName, String description, Integer status);
+
+    /**
+     * 根据分类名称获取分类信息
+     *
+     * @param categoryName
+     * @return
+     */
+    CategoryInfo getCategoryByName(String categoryName);
 }

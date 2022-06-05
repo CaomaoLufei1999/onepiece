@@ -2,7 +2,7 @@ package com.onepiece.start.controller.admin;
 
 import com.alibaba.fastjson.JSONObject;
 import com.onepiece.common.pojo.CategoryInfo;
-import com.onepiece.common.utils.JsonResultUtil;
+import com.onepiece.common.utils.JsonResultBuilder;
 import com.onepiece.common.vo.JsonResult;
 import com.onepiece.start.service.CategoryInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,8 +48,14 @@ public class CategoryInfoController {
         String description = params.get("description").toString();
         Integer status = Integer.valueOf(params.get("status").toString());
 
-        // TODO 发布文章分类之前进行查重校验
-        CategoryInfo categoryInfo = categoryInfoService.addCategory(categoryName, description, status);
-        return JsonResultUtil.success(categoryInfo);
+        // 发布文章分类之前进行查重校验
+        CategoryInfo categoryInfoTemp = categoryInfoService.getCategoryByName(categoryName);
+        if (categoryInfoTemp != null){
+            return JsonResultBuilder.error("该文章分类已经存在！");
+        }else {
+            // 新增文章分类
+            CategoryInfo categoryInfo = categoryInfoService.addCategory(categoryName, description, status);
+            return JsonResultBuilder.success(categoryInfo);
+        }
     }
 }

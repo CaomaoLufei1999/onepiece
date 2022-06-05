@@ -37,4 +37,9 @@ public class CategoryInfoServiceImpl implements CategoryInfoService {
         Integer integer = categoryInfoMapper.addCategory(categoryInfo);
         return categoryInfo;
     }
+
+    @Override
+    public CategoryInfo getCategoryByName(String categoryName) {
+        return categoryInfoMapper.getCategoryByName(categoryName);
+    }
 }

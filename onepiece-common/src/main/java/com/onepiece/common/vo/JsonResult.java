@@ -1,5 +1,6 @@
 package com.onepiece.common.vo;
 
+import com.onepiece.common.enums.BaseEnums;
 import com.onepiece.common.enums.UserAuthStatusEnums;
 import lombok.Data;
 
@@ -23,21 +24,27 @@ public class JsonResult<T> implements Serializable {
 
     public JsonResult(boolean success) {
         this.success = success;
-        this.code = success ? UserAuthStatusEnums.SUCCESS.getCode() : UserAuthStatusEnums.COMMON_FAIL.getCode();
-        this.msg = success ? UserAuthStatusEnums.SUCCESS.getMessage() : UserAuthStatusEnums.COMMON_FAIL.getMessage();
+        this.code = success ? BaseEnums.SUCCESS.getCode() : BaseEnums.ERROR.getCode();
+        this.msg = success ? BaseEnums.SUCCESS.getMsg() : BaseEnums.ERROR.getMsg();
+    }
+
+    public JsonResult(boolean success, String msg) {
+        this.success = success;
+        this.code = success ? BaseEnums.SUCCESS.getCode() : BaseEnums.ERROR.getCode();
+        this.msg = msg;
+    }
+
+    public JsonResult(boolean success, T data) {
+        this.success = success;
+        this.code = success ? BaseEnums.SUCCESS.getCode() : BaseEnums.ERROR.getCode();
+        this.msg = success ? BaseEnums.SUCCESS.getMsg() : BaseEnums.ERROR.getMsg();
+        this.data = data;
     }
 
     public JsonResult(boolean success, UserAuthStatusEnums resultEnum) {
         this.success = success;
         this.code = success ? UserAuthStatusEnums.SUCCESS.getCode() : (resultEnum == null ? UserAuthStatusEnums.COMMON_FAIL.getCode() : resultEnum.getCode());
         this.msg = success ? UserAuthStatusEnums.SUCCESS.getMessage() : (resultEnum == null ? UserAuthStatusEnums.COMMON_FAIL.getMessage() : resultEnum.getMessage());
-    }
-
-    public JsonResult(boolean success, T data) {
-        this.success = success;
-        this.code = success ? UserAuthStatusEnums.SUCCESS.getCode() : UserAuthStatusEnums.COMMON_FAIL.getCode();
-        this.msg = success ? UserAuthStatusEnums.SUCCESS.getMessage() : UserAuthStatusEnums.COMMON_FAIL.getMessage();
-        this.data = data;
     }
 
     public JsonResult(boolean success, UserAuthStatusEnums resultEnum, T data) {

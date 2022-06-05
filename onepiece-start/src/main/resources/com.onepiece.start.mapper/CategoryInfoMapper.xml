@@ -14,4 +14,10 @@
         VALUES (#{categoryName}, #{description}, #{isDelete}, #{status},
                 #{createTime});
     </insert>
+
+    <select id="getCategoryByName" resultType="com.onepiece.common.pojo.CategoryInfo" parameterType="java.lang.String">
+        select *
+        from category_info
+        where is_delete = 0 and category_name = #{categoryName}
+    </select>
 </mapper>

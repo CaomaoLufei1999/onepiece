@@ -27,4 +27,12 @@ public interface CategoryInfoMapper {
      * @return
      */
     Integer addCategory(CategoryInfo categoryInfo);
+
+    /**
+     * 根据分类名称获取分类信息
+     *
+     * @param categoryName
+     * @return
+     */
+    CategoryInfo getCategoryByName(String categoryName);
 }

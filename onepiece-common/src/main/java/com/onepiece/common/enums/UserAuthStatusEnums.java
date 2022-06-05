@@ -8,10 +8,10 @@ package com.onepiece.common.enums;
 public enum UserAuthStatusEnums {
 
     /** 授权成功 **/
-    SUCCESS(200, "成功"),
+    SUCCESS(2000, "成功"),
 
     /** 授权失败 **/
-    COMMON_FAIL(999, "失败"),
+    COMMON_FAIL(4000, "失败"),
 
     /** 参数错误：1000～1999 **/
     PARAM_NOT_VALID(1001, "参数无效"),
@@ -20,15 +20,15 @@ public enum UserAuthStatusEnums {
     PARAM_NOT_COMPLETE(1004, "参数缺失"),
 
     /** 用户信息错误 **/
-    USER_NOT_LOGIN(2001, "用户未登录"),
-    USER_ACCOUNT_EXPIRED(2002, "账号已过期"),
-    USER_CREDENTIALS_ERROR(2003, "密码错误"),
-    USER_CREDENTIALS_EXPIRED(2004, "密码过期"),
-    USER_ACCOUNT_DISABLE(2005, "账号不可用"),
-    USER_ACCOUNT_LOCKED(2006, "账号被锁定"),
-    USER_ACCOUNT_NOT_EXIST(2007, "账号不存在"),
-    USER_ACCOUNT_ALREADY_EXIST(2008, "账号已存在"),
-    USER_ACCOUNT_USE_BY_OTHERS(2009, "账号下线"),
+    USER_NOT_LOGIN(4001, "用户未登录"),
+    USER_ACCOUNT_EXPIRED(4002, "账号已过期"),
+    USER_CREDENTIALS_ERROR(4003, "密码错误"),
+    USER_CREDENTIALS_EXPIRED(4004, "密码过期"),
+    USER_ACCOUNT_DISABLE(4005, "账号不可用"),
+    USER_ACCOUNT_LOCKED(4006, "账号被锁定"),
+    USER_ACCOUNT_NOT_EXIST(4007, "账号不存在"),
+    USER_ACCOUNT_ALREADY_EXIST(4008, "账号已存在"),
+    USER_ACCOUNT_USE_BY_OTHERS(4009, "账号下线"),
 
     /** 权限错误 **/
     NO_PERMISSION(3001, "没有权限");
