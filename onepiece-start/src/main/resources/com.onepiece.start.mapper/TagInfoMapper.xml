@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.onepiece.start.mapper.TagInfoMapper">
+    <select id="getTagList" resultType="com.onepiece.common.pojo.TagInfo">
+        select *
+        from tag_info
+        where is_delete = 0
+    </select>
+
+    <insert id="addTag" parameterType="com.onepiece.common.pojo.TagInfo"
+            useGeneratedKeys="true" keyProperty="tagId" keyColumn="tag_id">
+        insert into tag_info (`tag_name`, `category_id`, `is_delete`, `status`,
+                              `create_time`)
+        values (#{tagName}, #{categoryId}, #{isDelete}, #{status},
+                #{createTime});
+    </insert>
+
+    <select id="getTagByName" resultType="com.onepiece.common.pojo.TagInfo" parameterType="java.lang.String">
+        select *
+        from tag_info
+        where is_delete = 0
+          and tag_name = #{tagName}
+    </select>
+</mapper>

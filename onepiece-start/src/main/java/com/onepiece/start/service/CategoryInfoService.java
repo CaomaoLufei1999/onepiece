@@ -3,6 +3,7 @@ package com.onepiece.start.service;
 import com.onepiece.common.pojo.CategoryInfo;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @描述 文章分类相关Service接口
@@ -35,4 +36,11 @@ public interface CategoryInfoService {
      * @return
      */
     CategoryInfo getCategoryByName(String categoryName);
+
+    /**
+     * 获取文章分类ID集合
+     *
+     * @return
+     */
+    List<Map<Integer, String>> getCategoryIds();
 }

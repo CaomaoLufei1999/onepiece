@@ -11,7 +11,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.util.Date;
 
 /**
- * @描述 文章分类实体类
+ * @描述 文章标签实体类
  * @作者 天天发呆的程序员
  * @创建时间 2022-06-04
  */
@@ -20,21 +20,21 @@ import java.util.Date;
 @AllArgsConstructor
 @ToString
 @Accessors(chain = true)
-public class CategoryInfo {
+public class TagInfo {
     /**
-     * 主键: 分类id
+     * 主键: 标签id
      */
-    private Integer categoryId;
+    private Integer tagId;
 
     /**
-     * 分类名称
+     * 标签名称
      */
-    private String categoryName;
+    private String tagName;
 
     /**
-     * 分类介绍
+     * 标签所属分类ID
      */
-    private String description;
+    private String categoryId;
 
     /**
      * 是否删除: 0未删除，1已删除
@@ -42,7 +42,7 @@ public class CategoryInfo {
     private Integer isDelete;
 
     /**
-     * 分类状态: 0未生效，1已生效
+     * 标签状态: 0未生效，1已生效
      */
     private Integer status;
 

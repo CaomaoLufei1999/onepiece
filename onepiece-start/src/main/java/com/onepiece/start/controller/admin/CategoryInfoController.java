@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @描述 文章分类相关操作的Controller接口
@@ -50,12 +51,23 @@ public class CategoryInfoController {
 
         // 发布文章分类之前进行查重校验
         CategoryInfo categoryInfoTemp = categoryInfoService.getCategoryByName(categoryName);
-        if (categoryInfoTemp != null){
+        if (categoryInfoTemp != null) {
             return JsonResultBuilder.error("该文章分类已经存在！");
-        }else {
+        } else {
             // 新增文章分类
             CategoryInfo categoryInfo = categoryInfoService.addCategory(categoryName, description, status);
             return JsonResultBuilder.success(categoryInfo);
         }
+    }
+
+    /**
+     * 获取文章分类id集合
+     *
+     * @return
+     */
+    @GetMapping("/ids")
+    public JsonResult getCategoryIds() {
+        List<Map<Integer, String>> categoryIds = categoryInfoService.getCategoryIds();
+        return JsonResultBuilder.success(categoryIds);
     }
 }

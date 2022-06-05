@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @描述 文章分类相关Service接口实现类
@@ -41,5 +42,10 @@ public class CategoryInfoServiceImpl implements CategoryInfoService {
     @Override
     public CategoryInfo getCategoryByName(String categoryName) {
         return categoryInfoMapper.getCategoryByName(categoryName);
+    }
+
+    @Override
+    public List<Map<Integer, String>> getCategoryIds() {
+        return categoryInfoMapper.getCategoryIds();
     }
 }

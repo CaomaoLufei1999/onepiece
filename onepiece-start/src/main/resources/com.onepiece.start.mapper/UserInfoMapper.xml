@@ -9,17 +9,17 @@
 
     <insert id="QQRegister" parameterType="com.onepiece.common.pojo.UserInfo"
             useGeneratedKeys="true" keyProperty="userId" keyColumn="user_id">
-        insert into `onepiece`.`user_info`(`openid`, `unionid`, `nickname`, `sex`,
-                                           `country`, `province`, `city`, `address`,
-                                           `account_binding_type`, `head_img`, `phone`, `email`,
-                                           `username`, `password`, `security_questions`, `interest_tags`,
-                                           `friend_links`, `description`, `privilege`, `identity`,
-                                           `level`, `points`, `create_time`)
+        insert into user_info(`openid`, `unionid`, `nickname`, `sex`,
+                              `country`, `province`, `city`, `address`,
+                              `account_binding_type`, `head_img`, `phone`, `email`,
+                              `username`, `password`, `security_questions`, `interest_tags`,
+                              `friend_links`, `description`, `privilege`, `identity`,
+                              `level`, `points`, `create_time`)
         values (#{openid}, #{unionid}, #{nickname}, #{sex},
                 #{country}, #{province}, #{city}, #{address},
-                #{accountbindingtype}, #{headimg}, #{phone}, #{email},
-                #{username}, #{password}, #{securityquestions}, #{interesttags},
-                #{friendlinks}, #{description}, #{privilege}, #{identity},
+                #{accountBindingType}, #{headImg}, #{phone}, #{email},
+                #{username}, #{password}, #{securityQuestions}, #{interestTags},
+                #{friendLinks}, #{description}, #{privilege}, #{identity},
                 #{level}, #{points}, #{createtime});
     </insert>
 

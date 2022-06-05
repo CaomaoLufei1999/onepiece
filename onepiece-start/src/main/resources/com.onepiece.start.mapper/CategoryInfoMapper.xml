@@ -9,15 +9,23 @@
 
     <insert id="addCategory" parameterType="com.onepiece.common.pojo.CategoryInfo"
             useGeneratedKeys="true" keyProperty="categoryId" keyColumn="category_id">
-        INSERT INTO `onepiece`.`category_info`(`category_name`, `description`, `is_delete`, `status`,
-                                               `create_time`)
-        VALUES (#{categoryName}, #{description}, #{isDelete}, #{status},
+        insert into category_info(`category_name`, `description`, `is_delete`, `status`,
+                                  `create_time`)
+        values (#{categoryName}, #{description}, #{isDelete}, #{status},
                 #{createTime});
     </insert>
 
     <select id="getCategoryByName" resultType="com.onepiece.common.pojo.CategoryInfo" parameterType="java.lang.String">
         select *
         from category_info
-        where is_delete = 0 and category_name = #{categoryName}
+        where is_delete = 0
+          and category_name = #{categoryName}
+    </select>
+
+    <select id="getCategoryIds" resultType="java.util.Map">
+        select category_id, category_name
+        from `category_info`
+        where `is_delete` = 0
+          and `status` = 1
     </select>
 </mapper>
