@@ -64,14 +64,14 @@ public class HttpApiServiceImpl implements HttpApiService {
             logger.info("响应内容为: {}", responseString);
             return responseString;
         } catch (ParseException | IOException e) {
-            logger.error("HttpApiServiceImpl doGet-1-1 method error: {}" ,e.getMessage());
+            logger.error("HttpApiServiceImpl doGet-1-1 method error: {}", e.getMessage());
         } finally {
             // 回收response到连接池
             if (null != response) {
                 try {
                     EntityUtils.consume(response.getEntity());
                 } catch (IOException e) {
-                    logger.error("HttpApiServiceImpl doGet-1-2 method error: {}" ,e.getMessage());
+                    logger.error("HttpApiServiceImpl doGet-1-2 method error: {}", e.getMessage());
                 }
             }
         }
@@ -109,14 +109,14 @@ public class HttpApiServiceImpl implements HttpApiService {
             String responseString = new String(bytes, ENCODING);
             return responseString;
         } catch (ParseException | IOException e) {
-            logger.error("HttpApiServiceImpl doPost-1-1 method error: {}" ,e.getMessage());
+            logger.error("HttpApiServiceImpl doPost-1-1 method error: {}", e.getMessage());
         } finally {
             // 回收response到连接池
             if (null != response) {
                 try {
                     EntityUtils.consume(response.getEntity());
                 } catch (IOException e) {
-                    logger.error("HttpApiServiceImpl doPost-1-2 method error: {}" ,e.getMessage());
+                    logger.error("HttpApiServiceImpl doPost-1-2 method error: {}", e.getMessage());
                 }
             }
         }
@@ -152,7 +152,7 @@ public class HttpApiServiceImpl implements HttpApiService {
         try {
             httpPost.setEntity(new StringEntity(json));
         } catch (UnsupportedEncodingException e) {
-            logger.error("HttpApiServiceImpl doPost-2-1 method error: {}" ,e.getMessage());
+            logger.error("HttpApiServiceImpl doPost-2-1 method error: {}", e.getMessage());
         }
 
         // 响应模型
@@ -167,14 +167,14 @@ public class HttpApiServiceImpl implements HttpApiService {
             String responseString = new String(bytes, ENCODING);
             return responseString;
         } catch (ParseException | IOException e) {
-            logger.error("HttpApiServiceImpl doPost-2-2 method error: {}" ,e.getMessage());
+            logger.error("HttpApiServiceImpl doPost-2-2 method error: {}", e.getMessage());
         } finally {
             // 回收response到连接池
             if (null != response) {
                 try {
                     EntityUtils.consume(response.getEntity());
                 } catch (IOException e) {
-                    logger.error("HttpApiServiceImpl doPost-2-3 method error: {}" ,e.getMessage());
+                    logger.error("HttpApiServiceImpl doPost-2-3 method error: {}", e.getMessage());
                 }
             }
         }

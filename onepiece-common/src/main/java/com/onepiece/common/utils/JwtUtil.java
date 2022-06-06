@@ -58,7 +58,7 @@ public class JwtUtil {
                 .setSubject("identity-authentication")                          // 主题: 身份认证
                 .setIssuedAt(new Date())                                        // 签发时间
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRE))   // 设置过期时间
-                .claim("userInfo" ,userInfo)                                 // 将playload载荷添加到JWT令牌中
+                .claim("userInfo", userInfo)                                 // 将playload载荷添加到JWT令牌中
                 .signWith(SignatureAlgorithm.HS256, JWT_SECRET)                 // 签名算法以及密匙
                 .compact();
     }

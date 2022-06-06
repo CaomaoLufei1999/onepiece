@@ -48,12 +48,28 @@ public class TagInfoController {
 
         // 创建标签之前进行查重校验
         TagInfo tagInfoTemp = tagInfoService.getTagByName(tagName);
-        if (tagInfoTemp != null){
+        if (tagInfoTemp != null) {
             return JsonResultBuilder.error("该标签已经存在！");
-        }else {
+        } else {
             // 新增标签
             TagInfo tagInfo = tagInfoService.addTag(tagName, categoryId, status);
             return JsonResultBuilder.success(tagInfo);
         }
+    }
+
+    /**
+     * 删除标签
+     *
+     * @param tagId 标签id
+     * @return
+     */
+    @PostMapping("/delete/{tagId}")
+    public JsonResult addCategory(@PathVariable("tagId") Integer tagId) {
+
+        Boolean result = tagInfoService.deleteTag(tagId);
+        if (result) {
+            return JsonResultBuilder.success("标签删除成功！");
+        }
+        return JsonResultBuilder.error("标签删除失败！");
     }
 }

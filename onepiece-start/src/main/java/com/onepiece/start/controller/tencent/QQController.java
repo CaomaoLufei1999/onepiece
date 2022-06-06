@@ -38,7 +38,7 @@ public class QQController {
         QQUserInfoDTO qqUserInfoDTO = qqService.getUserInfo(accessToken, openId);
         // QQ登录
         UserInfo userInfo = qqService.QQLogin(openId, qqUserInfoDTO);
-        if (userInfo != null){
+        if (userInfo != null) {
             String jwtToken = JwtUtil.getJwtToken(userInfo);
             return "登录成功,jwtToken为: " + jwtToken;
         }

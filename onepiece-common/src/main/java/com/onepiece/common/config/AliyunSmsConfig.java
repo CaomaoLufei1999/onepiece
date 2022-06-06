@@ -24,7 +24,7 @@ import java.util.Map;
  * @创建时间 2022-05-29
  */
 @Configuration // 声明配置类，放入Spring容器
-@PropertySource(value = {"classpath:application-aliyun-sms.properties"}, encoding="utf-8") // 指定配置文件位置
+@PropertySource(value = {"classpath:application-aliyun-sms.properties"}, encoding = "utf-8") // 指定配置文件位置
 @ConfigurationProperties(prefix = "aliyun.sms")
 @Data
 @Accessors(chain = true)
@@ -73,13 +73,13 @@ public class AliyunSmsConfig {
         try {
             CommonResponse response = client.getCommonResponse(request);
             logger.info("AliyunSmsConfig sendMessage response: {}", response.getData());
-            if (response.getData() != null){
+            if (response.getData() != null) {
                 String dataStr = response.getData();
                 JSONObject data = JSONObject.parseObject(dataStr);
-                if (data.get("Code").equals("OK")){
+                if (data.get("Code").equals("OK")) {
                     return response.getHttpResponse().isSuccess();
                 }
-            }else {
+            } else {
                 return false;
             }
         } catch (ClientException e) {

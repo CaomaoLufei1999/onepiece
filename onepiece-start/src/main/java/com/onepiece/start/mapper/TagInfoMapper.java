@@ -38,8 +38,17 @@ public interface TagInfoMapper {
 
     /**
      * 根据分类ID获取标签列表
+     *
      * @param categoryId
      * @return
      */
     List<TagInfo> getTagListByCategoryId(Integer categoryId);
+
+    /**
+     * 删除标签
+     *
+     * @param tagId
+     * @return
+     */
+    Integer deleteTag(Integer tagId);
 }

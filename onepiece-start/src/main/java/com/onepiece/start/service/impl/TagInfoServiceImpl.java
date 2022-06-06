@@ -47,4 +47,9 @@ public class TagInfoServiceImpl implements TagInfoService {
     public List<TagInfo> getTagListByCategoryId(Integer categoryId) {
         return tagInfoMapper.getTagListByCategoryId(categoryId);
     }
+
+    @Override
+    public Boolean deleteTag(Integer tagId) {
+        return tagInfoMapper.deleteTag(tagId) > 0;
+    }
 }

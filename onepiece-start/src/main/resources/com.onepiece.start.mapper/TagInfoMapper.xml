@@ -39,4 +39,10 @@
           and status = 1
           and category_id = #{categoryId}
     </select>
+
+    <update id="deleteTag" parameterType="java.lang.Integer">
+        update tag_info
+        set is_delete = 1
+        where tag_id = #{tagId}
+    </update>
 </mapper>

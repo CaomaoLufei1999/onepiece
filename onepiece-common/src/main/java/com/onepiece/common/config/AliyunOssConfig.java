@@ -53,6 +53,7 @@ public class AliyunOssConfig {
 
     /**
      * 将OSS 客户端交给Spring容器托管
+     *
      * @return
      */
     @Bean

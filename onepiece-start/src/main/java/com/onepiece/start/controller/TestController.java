@@ -65,7 +65,7 @@ public class TestController {
         codeMap.put("code", code);
 
         // 调用aliyunSendSmsService发送短信
-        Boolean bool = aliyunSmsConfig.sendMessage(phone,  codeMap);
+        Boolean bool = aliyunSmsConfig.sendMessage(phone, codeMap);
 
         if (bool) {
             // 如果发送成功，则将生成的4位随机验证码存入redis缓存,5分钟后过期
@@ -86,7 +86,7 @@ public class TestController {
     public String sendMail(@PathVariable("mail") String mail) {
 
         Boolean result = mailClientUtil.sendMail(mail, "测试邮件发送", "xxx");
-        if (result){
+        if (result) {
             return "测试邮件发送成功！";
         }
         return "测试邮件发送失败！";
