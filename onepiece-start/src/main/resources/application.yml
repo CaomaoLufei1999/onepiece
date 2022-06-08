@@ -48,7 +48,7 @@ wechat:
 # 微信开放平台相关配置，参考官网文档：https://developers.weixin.qq.com/doc/oplatform/Website_App/WeChat_Login/Wechat_Login.html
 open-wechat:
   appId: wx015d88247ad96a9c                               # 微信开放平台网页应用appId
-  secret: wx015d88247ad96a9c                              # 微信开放平台网页应用密钥secret
+  secret: 6935189544b9138e2cee3678b900b823                # 微信开放平台网页应用密钥secret
   redirectUrl: http://onepiece-data.natapp1.cc/onepiece/open-wechat/callback
 
 # 参考QQ互联官网文档：https://wiki.connect.qq.com/

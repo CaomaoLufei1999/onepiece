@@ -20,10 +20,10 @@ public interface UserInfoMapper {
     UserInfo getUserInfoByOpenId(String openId);
 
     /**
-     * QQ用户信息注册
+     * QQ/微信用户信息注册
      *
      * @param userInfo
      * @return
      */
-    Integer QQRegister(UserInfo userInfo);
+    Integer register(UserInfo userInfo);
 }

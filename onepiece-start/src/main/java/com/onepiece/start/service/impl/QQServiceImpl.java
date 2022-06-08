@@ -46,7 +46,7 @@ public class QQServiceImpl implements QQService {
     private static final String GET_ACCESS_TOKEN_URL = "https://graph.qq.com/oauth2.0/token?grant_type=authorization_code&client_id=%s&client_secret=%s&code=%s&redirect_uri=%s&fmt=json";
 
     /**
-     * 向腾讯开放平台申请access_token令牌的URL
+     * 向腾讯开放平台申请刷新access_token令牌有效时间的URL
      */
     private static final String REFRESH_ACCESS_TOKEN_URL = "https://graph.qq.com/oauth2.0/token?grant_type=refresh_token&client_id=%s&client_secret=%s&refresh_token=%s&fmt=json";
 
@@ -160,7 +160,7 @@ public class QQServiceImpl implements QQService {
                     .setPoints(0)
                     .setCreateTime(new Date());
 
-            Integer result = userInfoMapper.QQRegister(userInfo);
+            Integer result = userInfoMapper.register(userInfo);
             return userInfo;
         }
     }

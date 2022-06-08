@@ -1,5 +1,6 @@
 package com.onepiece.start.controller.tencent;
 
+import com.alibaba.fastjson.JSONObject;
 import com.onepiece.common.dto.QQUserInfoDTO;
 import com.onepiece.common.pojo.UserInfo;
 import com.onepiece.common.utils.JwtUtil;
@@ -29,7 +30,9 @@ public class QQController {
     private QQService qqService;
 
     @GetMapping("/auth/callback")
-    public String fallback(HttpServletRequest request, HttpServletResponse response) {
+    public JSONObject fallback(HttpServletRequest request, HttpServletResponse response) {
+        JSONObject jsonObject = new JSONObject();
+
         String code = request.getParameter("code");
         logger.info("用户点击登录链接，向腾讯开放平台申请登录校验成功后，获取到的code：{}", code);
 
@@ -40,10 +43,16 @@ public class QQController {
         UserInfo userInfo = qqService.QQLogin(openId, qqUserInfoDTO);
         if (userInfo != null) {
             String jwtToken = JwtUtil.getJwtToken(userInfo);
-            return "登录成功,jwtToken为: " + jwtToken;
-        }
 
-        return "登录失败";
+            jsonObject.put("success", true);
+            jsonObject.put("msg", "登录成功！");
+            jsonObject.put("jwtToken", jwtToken);
+            jsonObject.put("userInfo", userInfo);
+        } else {
+            jsonObject.put("success", false);
+            jsonObject.put("msg", "登录失败！");
+        }
+        return jsonObject;
     }
 
     /**

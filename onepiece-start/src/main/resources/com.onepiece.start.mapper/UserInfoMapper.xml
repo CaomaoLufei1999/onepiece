@@ -7,7 +7,7 @@
         where openid = #{openId}
     </select>
 
-    <insert id="QQRegister" parameterType="com.onepiece.common.pojo.UserInfo"
+    <insert id="register" parameterType="com.onepiece.common.pojo.UserInfo"
             useGeneratedKeys="true" keyProperty="userId" keyColumn="user_id">
         insert into user_info(`openid`, `unionid`, `nickname`, `sex`,
                               `country`, `province`, `city`, `address`,
@@ -20,16 +20,6 @@
                 #{accountBindingType}, #{headImg}, #{phone}, #{email},
                 #{username}, #{password}, #{securityQuestions}, #{interestTags},
                 #{friendLinks}, #{description}, #{privilege}, #{identity},
-                #{level}, #{points}, #{createtime});
+                #{level}, #{points}, #{createTime});
     </insert>
-
-
-
-    <!--    <select id="find" resultType="com.haust.redisdemo.domain.User" parameterType="string">-->
-    <!--        select id,user_name from sys_user where id=#{id}-->
-    <!--    </select>-->
-
-    <!--    <delete id="deleteAll">-->
-    <!--        delete from sys_user-->
-    <!--    </delete>-->
 </mapper>
