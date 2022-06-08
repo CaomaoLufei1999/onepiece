@@ -34,7 +34,7 @@ mybatis:
   type-aliases-package: com.onepiece.common.pojo          # 配置实体类扫描
   config-location: classpath:/mybatis-config.xml          # 指定全局mybatis配-config.xml置文件位置
 
-# 参考微信公众平台官网文档：https://developers.weixin.qq.com/doc/offiaccount/Getting_Started/Overview.html
+# 微信公众平台相关配置，参考官网文档：https://developers.weixin.qq.com/doc/offiaccount/Getting_Started/Overview.html
 wechat:
   token: onepiece                                         # 签名
   appId: wx92d68f8c12fddbbb                               # 微信公众号appId
@@ -45,8 +45,14 @@ wechat:
   sceneStr: ONEPIECE                                      # 场景值ID（字符串形式的ID），字符串类型，长度限制为1到64
   grantType: client_credential                            # 获取access_token时需要填写该参数值为：client_credential
 
+# 微信开放平台相关配置，参考官网文档：https://developers.weixin.qq.com/doc/oplatform/Website_App/WeChat_Login/Wechat_Login.html
+open-wechat:
+  appId: wx015d88247ad96a9c                               # 微信开放平台网页应用appId
+  secret: wx015d88247ad96a9c                              # 微信开放平台网页应用密钥secret
+  redirectUrl: http://onepiece-data.natapp1.cc/onepiece/open-wechat/callback
+
 # 参考QQ互联官网文档：https://wiki.connect.qq.com/
 qq:
-  appId: 102007859
-  appSecret: 2yf8OQFsIUSowpTS
+  appId: 102007859                                        # QQ互联网页应用appId
+  appSecret: 2yf8OQFsIUSowpTS                             # QQ互联网页应用密钥secret
   redirectUrl: http://onepiece-data.natapp1.cc/onepiece/qq/auth/callback

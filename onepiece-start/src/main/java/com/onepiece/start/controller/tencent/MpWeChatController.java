@@ -2,7 +2,7 @@ package com.onepiece.start.controller.tencent;
 
 import com.alibaba.fastjson.JSONObject;
 import com.onepiece.common.utils.XmlUtil;
-import com.onepiece.start.service.WeChatService;
+import com.onepiece.start.service.MpWeChatService;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,18 +10,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * @描述 对接微信相关Controller
+ * @描述 对接微信公众号相关Controller
  * @作者 天天发呆的程序员
  * @创建时间 2022-05-24
  */
 @RestController
 @RequestMapping("/wechat")
-public class WeChatController {
+public class MpWeChatController {
 
-    private static final Logger logger = LoggerFactory.getLogger(WeChatController.class);
+    private static final Logger logger = LoggerFactory.getLogger(MpWeChatController.class);
 
     @Autowired
-    private WeChatService weChatService;
+    private MpWeChatService weChatService;
 
     /**
      * 验证消息的确来自微信服务器

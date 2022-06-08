@@ -2,7 +2,7 @@ package com.onepiece.start.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.onepiece.start.service.HttpApiService;
-import com.onepiece.start.service.WeChatService;
+import com.onepiece.start.service.MpWeChatService;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,9 +18,9 @@ import java.util.*;
  * @创建时间 2022-05-24
  */
 @Service
-public class WeChatServiceImpl implements WeChatService {
+public class MpWeChatServiceImpl implements MpWeChatService {
 
-    private static final Logger logger = LoggerFactory.getLogger(WeChatServiceImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(MpWeChatServiceImpl.class);
 
     @Value("${wechat.token}")
     private String token;

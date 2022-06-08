@@ -3,11 +3,11 @@ package com.onepiece.start.service;
 import com.alibaba.fastjson.JSONObject;
 
 /**
- * @描述 对接微信相关接口
+ * @描述 对接微信公众号相关接口
  * @作者 天天发呆的程序员
  * @创建时间 2022-05-24
  */
-public interface WeChatService {
+public interface MpWeChatService {
     /**
      * 验证消息的确来自微信服务器
      *
@@ -24,7 +24,6 @@ public interface WeChatService {
      * @return
      */
     JSONObject getAccessToken();
-
 
     /**
      * 通过访问令牌，向微信服务器索要临时二维码ticket凭据
