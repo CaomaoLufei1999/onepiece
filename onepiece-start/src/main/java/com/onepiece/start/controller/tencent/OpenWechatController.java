@@ -53,7 +53,7 @@ public class OpenWechatController {
             jsonObject.put("msg", "登录成功！");
             jsonObject.put("jwtToken", jwtToken);
             jsonObject.put("userInfo", userInfo);
-        }else {
+        } else {
             jsonObject.put("success", false);
             jsonObject.put("msg", "登录失败！");
         }
